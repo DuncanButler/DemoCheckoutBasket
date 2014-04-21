@@ -30,5 +30,11 @@ namespace CheckoutBasket.Specifications
         {
             _basket.IsEmpty.ShouldBe(true);           
         }
+
+        [Test]
+        public void The_returned_basket_has_an_id()
+        {
+            _basket.Id.ShouldNotBeEmpty();         
+        }
     }
 }

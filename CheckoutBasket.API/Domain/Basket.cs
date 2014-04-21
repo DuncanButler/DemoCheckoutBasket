@@ -13,5 +13,6 @@ namespace CheckoutBasket.API.Domain
         }
 
         public bool IsEmpty { get { return ! _items.Any(); } }
+        public string Id { get; set; }
     }
 }
