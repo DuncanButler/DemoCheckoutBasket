@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Nancy;
+﻿using Nancy;
 
 namespace CheckoutBasket.API
 {
