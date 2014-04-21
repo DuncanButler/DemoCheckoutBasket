@@ -9,7 +9,7 @@ namespace CheckoutBasket.API
         {
             Get["/basket"] = _ =>
             {
-                return Response.AsJson(new Basket() {Items = new List<object>()});
+                return Response.AsJson(new Basket());
             };
         }
     }

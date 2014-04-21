@@ -5,8 +5,13 @@ namespace CheckoutBasket.API
 {
     public class Basket
     {
-        public IList<object> Items { get; set; }
+        private IList<object> _items;
+ 
+        public Basket()
+        {
+            _items = new List<object>();
+        }
 
-        public bool IsEmpty { get { return ! Items.Any(); } }
+        public bool IsEmpty { get { return ! _items.Any(); } }
     }
 }
