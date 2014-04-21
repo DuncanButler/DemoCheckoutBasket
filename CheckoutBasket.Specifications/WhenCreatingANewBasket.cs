@@ -28,7 +28,7 @@ namespace CheckoutBasket.Specifications
         [Test]
         public void Then_an_empty_basket_is_returned()
         {
-            _basket.Items.Any().ShouldBe(false);           
+            _basket.IsEmpty.ShouldBe(true);           
         }
     }
 }
