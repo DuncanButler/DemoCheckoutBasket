@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CheckoutBasket.API
+namespace CheckoutBasket.API.Domain
 {
     public class Basket
     {

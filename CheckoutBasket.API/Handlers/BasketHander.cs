@@ -1,6 +1,7 @@
-﻿using Nancy;
+﻿using CheckoutBasket.API.Domain;
+using Nancy;
 
-namespace CheckoutBasket.API
+namespace CheckoutBasket.API.Handlers
 {
     public class BasketHander : NancyModule
     {
