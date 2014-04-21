@@ -10,7 +10,9 @@ namespace CheckoutBasket.API.Handlers
         {
             Get["/basket"] = _ =>
             {
-                return Response.AsJson(new Basket(){Id = Guid.NewGuid().ToString().Replace("-","")});
+                Basket basket = Basket.CreateWithId();
+
+                return Response.AsJson(basket);
             };
         }
     }
