@@ -1,5 +1,4 @@
-﻿using System;
-using CheckoutBasket.API.Domain;
+﻿using CheckoutBasket.API.Domain;
 using Nancy;
 
 namespace CheckoutBasket.API.Handlers
@@ -10,7 +9,7 @@ namespace CheckoutBasket.API.Handlers
         {
             Get["/basket"] = _ =>
             {
-                Basket basket = Basket.CreateWithId();
+                var basket = Basket.CreateWithId();
 
                 return Response.AsJson(basket);
             };

@@ -1,5 +1,4 @@
-﻿using CheckoutBasket.API;
-using CheckoutBasket.API.Domain;
+﻿using CheckoutBasket.API.Domain;
 using Nancy;
 using Nancy.Testing;
 using NUnit.Framework;
