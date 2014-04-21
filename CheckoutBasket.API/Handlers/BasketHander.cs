@@ -1,4 +1,5 @@
-﻿using CheckoutBasket.API.Domain;
+﻿using System;
+using CheckoutBasket.API.Domain;
 using Nancy;
 
 namespace CheckoutBasket.API.Handlers
@@ -9,7 +10,7 @@ namespace CheckoutBasket.API.Handlers
         {
             Get["/basket"] = _ =>
             {
-                return Response.AsJson(new Basket());
+                return Response.AsJson(new Basket(){Id = Guid.NewGuid().ToString().Replace("-","")});
             };
         }
     }
