@@ -61,6 +61,7 @@
     <Compile Include="BddTesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenCreatingANewBasket.cs" />
+    <Compile Include="WhenGettingAnExistingBasket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
