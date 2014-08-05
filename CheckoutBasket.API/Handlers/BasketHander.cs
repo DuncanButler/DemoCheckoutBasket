@@ -7,7 +7,7 @@ namespace CheckoutBasket.API.Handlers
     {
         public BasketHander()
         {
-            Get["/basket"] = _ =>
+            Get["/basket/{id?}"] = _ =>
             {
                 var basket = Basket.CreateWithId();
 
