@@ -28,9 +28,9 @@ namespace CheckoutBasket.API.Domain
 
             // store event in basket event store
             var filename = string.Format("./EventStore/Basket/{0}", id);
-            var sterilizer = new XmlSerializer(typeof (CreateBasketEvent));
+            var sterilizer = new XmlSerializer(typeof (List<CreateBasketEvent>));
             var writer = new StreamWriter(filename);
-            sterilizer.Serialize(writer,basketEvent);
+            sterilizer.Serialize(writer,new List<CreateBasketEvent>{basketEvent});
             writer.Close();
 
             // return new basket
