@@ -9,8 +9,13 @@ namespace CheckoutBasket.API.Handlers
         {
             Get["/basket/{id?}"] = _ =>
             {
-                var basket = Basket.CreateWithId();
-
+                Basket basket;
+                
+                if (_.id == null)
+                    basket = Basket.CreateWithId();
+                else
+                    basket = Basket.GetWithId(_.id);
+                
                 return Response.AsJson(basket);
             };
         }
