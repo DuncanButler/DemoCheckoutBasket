@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
+using CheckoutBasket.API.Events;
 
 namespace CheckoutBasket.API.Domain
 {
@@ -18,7 +21,20 @@ namespace CheckoutBasket.API.Domain
 
         public static Basket CreateWithId()
         {
-            return new Basket { Id = GenerateBasketId() };
+            string id = GenerateBasketId();
+
+            // create event
+            var basketEvent = new CreateBasketEvent {Id = id};
+
+            // store event in basket event store
+            var filename = string.Format("./EventStore/Basket/{0}", id);
+            var sterilizer = new XmlSerializer(typeof (CreateBasketEvent));
+            var writer = new StreamWriter(filename);
+            sterilizer.Serialize(writer,basketEvent);
+            writer.Close();
+
+            // return new basket
+            return new Basket { Id = id };
         }
 
         private static string GenerateBasketId()

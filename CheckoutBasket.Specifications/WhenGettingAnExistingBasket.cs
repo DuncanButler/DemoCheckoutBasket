@@ -6,34 +6,34 @@ using Shouldly;
 
 namespace CheckoutBasket.Specifications
 {
-    public class WhenGettingAnExistingBasket : BddBase
-    {
-        private Browser _browser;
-        private Basket _basket;
-        private string _basketId;
+    //public class WhenGettingAnExistingBasket : BddBase
+    //{
+    //    private Browser _browser;
+    //    private Basket _basket;
+    //    private string _basketId;
 
-        protected override void Given()
-        {
-            var bootstrapper = new DefaultNancyBootstrapper();
-            _browser = new Browser(bootstrapper);
+    //    protected override void Given()
+    //    {
+    //        var bootstrapper = new DefaultNancyBootstrapper();
+    //        _browser = new Browser(bootstrapper);
 
-            var response = _browser.Get("/basket");
+    //        var response = _browser.Get("/basket");
 
-            var basket = response.Body.DeserializeJson<Basket>();
-            _basketId = basket.Id;
-        }
+    //        var basket = response.Body.DeserializeJson<Basket>();
+    //        _basketId = basket.Id;
+    //    }
 
-        protected override void When()
-        {
-            var response = _browser.Get(string.Format("/basket/{0}",_basketId));
+    //    protected override void When()
+    //    {
+    //        var response = _browser.Get(string.Format("/basket/{0}",_basketId));
 
-            _basket = response.Body.DeserializeJson<Basket>();
-        }
+    //        _basket = response.Body.DeserializeJson<Basket>();
+    //    }
 
-        [Test]
-        public void Specification()
-        {
-            _basket.Id.ShouldBe(_basketId);            
-        }
-    }
+    //    [Test]
+    //    public void Specification()
+    //    {
+    //        _basket.Id.ShouldBe(_basketId);            
+    //    }
+    //}
 }
