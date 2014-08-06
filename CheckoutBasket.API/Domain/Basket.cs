@@ -23,23 +23,15 @@ namespace CheckoutBasket.API.Domain
         {
             string id = GenerateBasketId();
 
-            // create event
             var basketEvent = new CreateBasketEvent {Id = id};
 
-            // store event in basket event store
             var filename = string.Format("./EventStore/Basket/{0}", id);
             var sterilizer = new XmlSerializer(typeof (List<ApplicationEvent>));
             var writer = new StreamWriter(filename);
             sterilizer.Serialize(writer,new List<ApplicationEvent>{basketEvent});
             writer.Close();
 
-            // return new basket
             return new Basket { Id = id };
-        }
-
-        private static string GenerateBasketId()
-        {
-            return Guid.NewGuid().ToString().Replace("-", "");
         }
 
         public static Basket GetWithId(string basketId)
@@ -47,11 +39,15 @@ namespace CheckoutBasket.API.Domain
             var filename = string.Format("./EventStore/Basket/{0}", basketId);
             var sterilizer = new XmlSerializer(typeof (List<ApplicationEvent>));
             var reader = new StreamReader(filename);
-
             var events = (List<ApplicationEvent>) sterilizer.Deserialize(reader);
             reader.Close();
 
-            return new Basket(){Id = ((CreateBasketEvent)events[0]).Id};
+            return new Basket {Id = ((CreateBasketEvent)events[0]).Id};
+        }
+
+        private static string GenerateBasketId()
+        {
+            return Guid.NewGuid().ToString().Replace("-", "");
         }
     }
 }
