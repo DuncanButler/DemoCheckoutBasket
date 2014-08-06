@@ -67,6 +67,8 @@
     <Compile Include="Events\CreateBasketEvent.cs" />
     <Compile Include="Handlers\BasketHander.cs" />
     <Compile Include="Domain\Basket.cs" />
+    <Compile Include="Infrastructure\EventStore.cs" />
+    <Compile Include="Infrastructure\IEventStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
 using CheckoutBasket.API.Events;
+using CheckoutBasket.API.Infrastructure;
 
 namespace CheckoutBasket.API.Domain
 {
@@ -26,10 +25,8 @@ namespace CheckoutBasket.API.Domain
             var basketEvent = new CreateBasketEvent {Id = id};
 
             var filename = string.Format("./EventStore/Basket/{0}", id);
-            var sterilizer = new XmlSerializer(typeof (List<ApplicationEvent>));
-            var writer = new StreamWriter(filename);
-            sterilizer.Serialize(writer,new List<ApplicationEvent>{basketEvent});
-            writer.Close();
+            var eventstore = new EventStore();
+            eventstore.Store(basketEvent, filename);
 
             return new Basket { Id = id };
         }
@@ -37,10 +34,8 @@ namespace CheckoutBasket.API.Domain
         public static Basket GetWithId(string basketId)
         {
             var filename = string.Format("./EventStore/Basket/{0}", basketId);
-            var sterilizer = new XmlSerializer(typeof (List<ApplicationEvent>));
-            var reader = new StreamReader(filename);
-            var events = (List<ApplicationEvent>) sterilizer.Deserialize(reader);
-            reader.Close();
+            var eventstore = new EventStore();
+            var events = eventstore.Retrieve(filename);
 
             return new Basket {Id = ((CreateBasketEvent)events[0]).Id};
         }
