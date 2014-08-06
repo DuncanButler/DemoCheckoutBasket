@@ -37,6 +37,9 @@ namespace CheckoutBasket.API.Domain
             var eventstore = new EventStore();
             var events = eventstore.Retrieve(filename);
 
+            if (events == null)
+                return null;
+
             return new Basket {Id = ((CreateBasketEvent)events[0]).Id};
         }
 

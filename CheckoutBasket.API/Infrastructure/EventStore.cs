@@ -18,6 +18,9 @@ namespace CheckoutBasket.API.Infrastructure
 
         public IList<ApplicationEvent> Retrieve(string path)
         {
+            if (! File.Exists(path))
+                return null;
+
             var sterilizer = new XmlSerializer(typeof(List<ApplicationEvent>));
             var reader = new StreamReader(path);
             var events = (List<ApplicationEvent>)sterilizer.Deserialize(reader);

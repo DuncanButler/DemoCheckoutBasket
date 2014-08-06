@@ -15,7 +15,10 @@ namespace CheckoutBasket.API.Handlers
                     basket = Basket.CreateWithId();
                 else
                     basket = Basket.GetWithId(_.id);
-                
+
+                if (basket == null)
+                    return HttpStatusCode.NotFound;
+
                 return Response.AsJson(basket);
             };
         }
